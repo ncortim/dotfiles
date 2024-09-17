@@ -27,10 +27,19 @@ $ git clone git@github.com/dreamsofautonomy/dotfiles.git
 $ cd dotfiles
 ```
 
-then use GNU stow to create symlinks
+Use file `.stow-local-ignore` if you want to override the default ignored files
 
+Then use GNU stow to create symlinks
 ```bash
 $ stow .
 ```
+
+In case of conflicts use
+```bash
+$ stow --adopt .
+```
+
+> [NOTE] This moves local files into dotfiles directory and then be allowed
+to create the symbolic links
 
 
