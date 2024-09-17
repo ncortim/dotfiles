@@ -1,0 +1,39 @@
+(defsrc
+  caps
+  grv
+  h
+  j
+  k
+  l
+  u
+  i
+)
+
+(defalias
+  escctrl (tap-hold 50 50 esc lctrl)
+  letterarrows (tap-hold-press 50 50 grv (layer-toggle arrows))
+)
+
+(deflayer base
+  @escctrl
+  @letterarrows
+  _
+  _
+  _
+  _
+  _
+  _
+)
+
+
+(deflayer arrows
+  _
+  _
+  left
+  down
+  up
+  rght
+  PageUp
+  PageDown
+  
+)
