@@ -9,3 +9,5 @@ alias brc='nvim /home/${USER}/.bashrc'
 alias cat='batcat'
 alias k='kubectl'
 
+alias ff='nvim $(fzf)'
+alias fd='cd $(find /home/nicolas -type d | fzf) && nvim .'
