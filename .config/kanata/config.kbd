@@ -7,16 +7,20 @@
   l
   u
   i
+  o
+  n
 )
 
 (defalias
-  escctrl (tap-hold 50 50 esc lctrl)
-  letterarrows (tap-hold-press 50 50 grv (layer-toggle arrows))
+  escctrl (tap-hold 100 100 esc lctrl)
+  letterarrows (tap-hold-press 100 100 grv (layer-toggle arrows))
 )
 
 (deflayer base
   @escctrl
   @letterarrows
+  _
+  _
   _
   _
   _
@@ -35,5 +39,7 @@
   rght
   PageUp
   PageDown
+  Home
+  End
   
 )
