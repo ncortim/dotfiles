@@ -1,6 +1,11 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+
 (defsrc
-  caps
-  grv
+  caps a s d f ;
+  spc
   h
   j
   k
@@ -11,18 +16,31 @@
   n
 )
 
+(defvar
+  tap-timeout 150
+  hold-timeout 200
+)
+
 (defalias
   escctrl (tap-hold 100 100 esc lctrl)
-  letterarrows (tap-hold-press 100 100 grv (layer-toggle arrows))
+  letterarrows (tap-hold $tap-timeout $hold-timeout spc (layer-toggle arrows))
+  a (tap-hold $tap-timeout $hold-timeout a lmet)
+  s (tap-hold $tap-timeout $hold-timeout s lalt)
+  d (tap-hold $tap-timeout $hold-timeout d lsft)
+  f (tap-hold $tap-timeout $hold-timeout f lctl)
+  j (tap-hold $tap-timeout $hold-timeout j rctl)
+  k (tap-hold $tap-timeout $hold-timeout k rsft)
+  l (tap-hold $tap-timeout $hold-timeout l ralt)
+  ; (tap-hold $tap-timeout $hold-timeout ; rmet)
 )
 
 (deflayer base
-  @escctrl
+  @escctrl @a @s @d @f @;
   @letterarrows
   _
-  _
-  _
-  _
+  @j
+  @k
+  @l
   _
   _
   _
@@ -31,7 +49,7 @@
 
 
 (deflayer arrows
-  _
+  _ _ _ _ _ _
   _
   left
   down
@@ -43,3 +61,4 @@
   End
   
 )
+
