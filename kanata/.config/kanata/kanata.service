@@ -5,9 +5,9 @@ Documentation=https://github.com/jtroo/kanata
 [Service]
 Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 ; Environment=DISPLAY=:0
-; Environment=HOME=/home/${USER}
+; Environment=HOME=${HOME}
 ; Type=simple
-ExecStart=/bin/kanata --cfg /home/${USER}/.config/kanata/config.kbd
+ExecStart=/bin/kanata --cfg ${HOME}/.config/kanata/config.kbd
 Restart=always
 
 [Install]
