@@ -28,10 +28,10 @@
   s (tap-hold $tap-timeout $hold-timeout s lalt)
   d (tap-hold $tap-timeout $hold-timeout d lsft)
   f (tap-hold $tap-timeout $hold-timeout f lctl)
-  j (tap-hold $tap-timeout $hold-timeout j rctl)
+  j (tap-hold $tap-timeout $hold-timeout j lctl)
   k (tap-hold $tap-timeout $hold-timeout k rsft)
-  l (tap-hold $tap-timeout $hold-timeout l ralt)
-  ; (tap-hold $tap-timeout $hold-timeout ; rmet)
+  l (tap-hold $tap-timeout $hold-timeout l lalt)
+  ; (tap-hold $tap-timeout $hold-timeout ; lmet)
 )
 
 (deflayer base
