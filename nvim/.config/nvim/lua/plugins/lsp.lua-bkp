@@ -7,6 +7,7 @@ return {
 		-- Mason must be loaded before its dependents so we need to set it up here.
 		-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
 		{ "williamboman/mason.nvim", opts = {} },
+		-- { "williamboman/mason-lspconfig.nvim", opts = { "lua_ls", "tsserver", "jdtls" } },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
@@ -16,6 +17,17 @@ return {
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
 	},
+	-- opts = {
+	-- 	-- make sure mason installs the server
+	-- 	servers = {
+	-- 		jdtls = {},
+	-- 	},
+	-- 	setup = {
+	-- 		jdtls = function()
+	-- 			return true -- avoid duplicate servers
+	-- 		end,
+	-- 	},
+	-- },
 	config = function()
 		-- Brief aside: **What is LSP?**
 		--
@@ -96,13 +108,13 @@ return {
 				--  For example, in C this would take you to the header.
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-				-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+				-- This function resolves a difference between neovim nightly (version 1.11) and stable (version 0.10)
 				---@param client vim.lsp.Client
 				---@param method vim.lsp.protocol.Method
 				---@param bufnr? integer some lsp support methods only in specific files
 				---@return boolean
 				local function client_supports_method(client, method, bufnr)
-					if vim.fn.has("nvim-0.11") == 1 then
+					if vim.fn.has("nvim1.11") == 1 then
 						return client:supports_method(method, bufnr)
 					else
 						return client.supports_method(method, { bufnr = bufnr })
@@ -138,9 +150,9 @@ return {
 
 					vim.api.nvim_create_autocmd("LspDetach", {
 						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-						callback = function(event2)
+						callback = function(event3)
 							vim.lsp.buf.clear_references()
-							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event3.buf })
 						end,
 					})
 				end
@@ -176,7 +188,7 @@ return {
 			} or {},
 			virtual_text = {
 				source = "if_many",
-				spacing = 2,
+				spacing = 3,
 				format = function(diagnostic)
 					local diagnostic_message = {
 						[vim.diagnostic.severity.ERROR] = diagnostic.message,
@@ -218,6 +230,7 @@ return {
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
 			--
+			-- jdtls = {},
 
 			lua_ls = {
 				-- cmd = { ... },

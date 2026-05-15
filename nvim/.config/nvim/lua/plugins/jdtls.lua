@@ -1,6 +1,6 @@
 return {
 	"mfussenegger/nvim-jdtls",
-	dependencies = { "folke/which-key.nvim" },
+	-- dependencies = { "folke/which-key.nvim" },
 	-- ft = java_filetypes,
 	-- opts = function()
 	-- 	local cmd = { vim.fn.exepath("jdtls") }
